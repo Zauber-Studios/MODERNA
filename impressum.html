@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Impressum - MODERNA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const lightEffect = document.querySelector(".light-effect");
+        let currentX = 0;
+        let currentY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        document.addEventListener("mousemove", (e) => {
+          targetX = e.clientX;
+          targetY = e.clientY;
+        });
+
+        function updatePosition() {
+          // Sanfte Bewegung mit Verzögerung
+          currentX += (targetX - currentX) * 0.1;
+          currentY += (targetY - currentY) * 0.1;
+
+          lightEffect.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
+
+          requestAnimationFrame(updatePosition);
+        }
+
+        updatePosition();
+      });
+
+      // Scroll Navigation
+      window.addEventListener("scroll", () => {
+        const scrollNav = document.querySelector(".scroll-nav");
+        if (window.scrollY > 100) {
+          scrollNav.classList.add("visible");
+        } else {
+          scrollNav.classList.remove("visible");
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="grid-background"></div>
+    <div class="light-effect"></div>
+    <nav class="scroll-nav">
+      <div class="logo">
+        <img src="Img/MODERNA-LOGOminigerundet.png" alt="MODERNA Logo" />
+      </div>
+      <div class="title">MODERNA - Die Partei</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="impressum.html">Impressum</a>
+      </div>
+    </nav>
+    <div class="container">
+      <img class="MODERNA-LOGOmini" src="Img/MODERNA-LOGOmini.png" />
+      <div>
+        <a class="menu-link" href="index.html">Home</a>
+        <a class="menu-link" href="impressum.html">Impressum</a>
+      </div>
+    </div>
+
+    <div class="content-wrapper impressum-wrapper">
+      <div class="description-box impressum-box">
+        <h1>Impressum</h1>
+        
+        <h2>Angaben gemäß § 5 TMG:</h2>
+        <p>Partei MODERNA</p>
+
+        <h2>Vertreten durch den Vorstand:</h2>
+        <p>[Vor- und Nachname des Vorsitzenden]</p>
+
+        <h2>Anschrift:</h2>
+        <p>
+          [Vor- und Nachname]<br>
+          [Musterstraße 1]<br>
+          [12345 Musterstadt]
+        </p>
+
+        <h2>Kontakt:</h2>
+        <p>E-Mail: kontakt@moderna-partei.de</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -11,27 +11,143 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const lightEffect = document.querySelector(".light-effect");
+        let currentX = 0;
+        let currentY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        document.addEventListener("mousemove", (e) => {
+          targetX = e.clientX;
+          targetY = e.clientY;
+        });
+
+        function updatePosition() {
+          // Sanfte Bewegung mit Verzögerung
+          currentX += (targetX - currentX) * 0.1;
+          currentY += (targetY - currentY) * 0.1;
+
+          lightEffect.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
+
+          requestAnimationFrame(updatePosition);
+        }
+
+        updatePosition();
+      });
+
+      // Scroll Navigation
+      window.addEventListener("scroll", () => {
+        const scrollNav = document.querySelector(".scroll-nav");
+        if (window.scrollY > 100) {
+          scrollNav.classList.add("visible");
+        } else {
+          scrollNav.classList.remove("visible");
+        }
+      });
+    </script>
   </head>
   <body>
-    <img class="background-LOGO" src="/Img/background-blue.jpg" />
+    <div class="grid-background"></div>
+    <div class="light-effect"></div>
+    <nav class="scroll-nav">
+      <div class="logo">
+        <img src="Img/MODERNA-LOGOminigerundet.png" alt="MODERNA Logo" />
+      </div>
+      <div class="title">MODERNA - Die Partei</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="impressum.html">Impressum</a>
+      </div>
+    </nav>
     <div class="container">
       <img class="MODERNA-LOGOmini" src="Img/MODERNA-LOGOmini.png" />
       <div>
-        <a class="menu-link" href="">Home</a>
-        <a class="menu-link" href="">Impressum</a>
-        <a class="menu-link" href="https://discord.gg/VYYw4VTKgw">Discord</a>
+        <a class="menu-link" href="index.html">Home</a>
+        <a class="menu-link" href="impressum.html">Impressum</a>
       </div>
     </div>
     <a class="überschrift">MODERNA die Partei</a>
-    <iframe
-      class="video"
-      id="meinVideo"
-      src="https://www.youtube.com/embed/Vfm_vYylhdU?autoplay=1&mute=1"
-      title="YouTube video player"
-      frameborder="0"
-      allow="autoplay; encrypted-media; picture-in-picture"
-      allowfullscreen
-    >
-    </iframe>
+    <div class="content-wrapper">
+      <div class="description-box">
+        <h1>Partei MODERNA</h1>
+        <p class="slogan">
+          <strong>„Von und für die <del>Community</del> Gesellschaft"</strong>
+        </p>
+
+        <p>
+          Die Partei <strong>MODERNA</strong> versteht sich als revolutionäre
+          Bewegung, die eine neue gesellschaftliche und wirtschaftliche Ordnung
+          anstrebt. Ihr Ziel ist eine Welt, in der
+          <strong
+            >Armut, Hunger und Obdachlosigkeit der Vergangenheit
+            angehören</strong
+          >.
+        </p>
+
+        <p>Die 4 Grundpfeiler von MODERNA sind:</p>
+
+        <div class="pillar">
+          <h2>1. Wirtschaft</h2>
+          <p>
+            MODERNA verfolgt ein ausgewogenes Modell zwischen
+            <strong>Kapitalismus und Kommunismus</strong>. Optimierung,
+            Innovation und Wohlstand werden mit Solidarität, Fairness und
+            sozialer Absicherung verbunden. Dadurch soll eine Wirtschaft
+            entstehen, die allen Menschen dient – nicht nur wenigen.
+          </p>
+        </div>
+
+        <div class="pillar">
+          <h2>2. Gesellschaft</h2>
+          <p>
+            Das Wohlergehen der Menschen steht im Mittelpunkt. Niemand soll
+            zurückgelassen werden. MODERNA kämpft für soziale Gerechtigkeit,
+            starke Gemeinschaften und ein Leben in Würde für alle.
+          </p>
+        </div>
+
+        <div class="pillar">
+          <h2>3. Bildung</h2>
+          <p>
+            MODERNA setzt auf ein modernes Bildungssystem, das Kreativität,
+            kritisches Denken und Zusammenarbeit fördert. Statt starrer
+            Strukturen soll Lernen praxisnah, individuell und
+            gemeinschaftsorientiert gestaltet werden – als Fundament für eine
+            bessere Zukunft.
+          </p>
+        </div>
+
+        <div class="pillar">
+          <h2>4. Infrastruktur & Mobilität</h2>
+          <p>
+            MODERNA setzt auf eine zukunftsweisende Verkehrspolitik. Statt
+            weiter auf veraltete Strukturen zu bauen, sollen innovativen
+            Technologien wie Magnetschwebebahnen (z. B. Transrapid) Vorrang
+            gegeben werden. Ziel ist es, ein schnelles, umweltfreundliches und
+            modernes Mobilitätssystem aufzubauen, das Menschen effizient
+            verbindet, Staus und Emissionen reduziert und Deutschland als
+            Vorreiter für nachhaltige Infrastruktur etabliert.
+          </p>
+        </div>
+
+        <p class="conclusion">
+          Mit ihrem Leitgedanken
+          <strong>„Von und für die <del>Community</del> Gesellschaft"</strong>
+          steht MODERNA für einen echten Neuanfang:
+          <strong>revolutionär, menschlich und zukunftsorientiert.</strong>
+        </p>
+      </div>
+      <div class="button-box">
+        <a href="pdf/MODERNA Wahlprogramm.pdf" class="pdf-button"
+          >MODERNA Wahlprogramm</a
+        >
+        <a href="Img/MODERNA-LOGO.png" class="pdf-button">MODERNA Logo</a>
+        <a href="https://discord.gg/VYYw4VTKgw" class="pdf-button"
+          >Tritt unserem Discord bei!</a
+        >
+      </div>
+    </div>
   </body>
 </html>

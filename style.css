@@ -1,16 +1,125 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  min-height: 100vh;
   font-family: "SUSE Mono", sans-serif;
+  background: #001830;
+  overflow-x: hidden;
+  position: relative;
 }
-.background-LOGO {
-  height: 100vh;
-  width: 100%;
-  object-fit: cover;
-  filter: brightness(0.5);
+
+.grid-background {
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 50px 50px;
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  z-index: -2;
+}
+
+.light-effect {
+  position: fixed;
+  pointer-events: none;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  transform: translate(-50%, -50%);
+  z-index: 99999;
+  opacity: 1;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 24, 48, 0.3),
+    rgba(0, 24, 48, 0.7)
+  );
   z-index: -1;
+}
+
+.star:nth-child(3) {
+  left: 30%;
+  top: 25%;
+  animation: twinkle 3.5s infinite 1.5s;
+}
+.star:nth-child(4) {
+  left: 40%;
+  top: 60%;
+  animation: twinkle 4s infinite 2s;
+}
+.star:nth-child(5) {
+  left: 50%;
+  top: 30%;
+  animation: twinkle 3s infinite 0s;
+}
+.star:nth-child(6) {
+  left: 60%;
+  top: 70%;
+  animation: twinkle 3.5s infinite 1s;
+}
+.star:nth-child(7) {
+  left: 70%;
+  top: 45%;
+  animation: twinkle 4s infinite 2s;
+}
+.star:nth-child(8) {
+  left: 80%;
+  top: 15%;
+  animation: twinkle 3s infinite 0.5s;
+}
+.star:nth-child(9) {
+  left: 90%;
+  top: 50%;
+  animation: twinkle 3.5s infinite 1.5s;
+}
+.star:nth-child(10) {
+  left: 15%;
+  top: 80%;
+  animation: twinkle 4s infinite 1s;
+}
+.star:nth-child(11) {
+  left: 25%;
+  top: 65%;
+  animation: twinkle 3s infinite 2s;
+}
+.star:nth-child(12) {
+  left: 55%;
+  top: 85%;
+  animation: twinkle 3.5s infinite 0s;
+}
+.star:nth-child(13) {
+  left: 75%;
+  top: 75%;
+  animation: twinkle 4s infinite 1.5s;
+}
+.star:nth-child(14) {
+  left: 85%;
+  top: 35%;
+  animation: twinkle 3s infinite 1s;
+}
+.star:nth-child(15) {
+  left: 45%;
+  top: 95%;
+  animation: twinkle 3.5s infinite 0.5s;
 }
 .container {
   position: absolute;
@@ -22,13 +131,63 @@ body {
   align-items: flex-start;
   justify-content: space-between;
 }
+
+.scroll-nav {
+  position: fixed;
+  top: -100px;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: rgba(0, 24, 48, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  transition: top 0.3s;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-nav.visible {
+  top: 0;
+}
+
+.scroll-nav .logo img {
+  height: 50px;
+  border-radius: 5px;
+}
+
+.scroll-nav .title {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.scroll-nav .nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.scroll-nav .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.scroll-nav .nav-links a:hover {
+  color: #66a3ff;
+}
 .menu-link {
   color: #ffffff;
   text-decoration: none;
   margin-left: 16px;
+  transition: color 0.3s;
 }
 .menu-link:hover {
-  text-decoration: underline;
+  color: #66a3ff;
 }
 .MODERNA-LOGOmini {
   height: 100px;
@@ -42,6 +201,29 @@ body {
   color: #ffffff;
   font-size: 64px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  padding-bottom: 20px;
+}
+
+.überschrift::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -20%;
+  right: -20%;
+  height: 2px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #fff;
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    transparent 20%,
+    #fff 50%,
+    transparent 80%,
+    transparent
+  );
+  transform: perspective(100px) rotateX(30deg);
+  opacity: 0.7;
 }
 .video {
   position: absolute;
@@ -53,6 +235,147 @@ body {
   border: 5px solid #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.content-wrapper {
+  position: relative;
+  top: 400px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.description-box {
+  background-color: rgba(255, 255, 255, 0.82);
+  padding: 25px;
+  border-radius: 15px;
+  width: 65%;
+  flex-shrink: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #000;
+}
+
+.description-box h1 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  color: #000;
+  text-align: center;
+}
+
+.description-box h2 {
+  font-size: 1.3em;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  color: #000;
+}
+
+.description-box p {
+  margin-bottom: 12px;
+  line-height: 1.5;
+  font-size: 0.95em;
+}
+
+.description-box .slogan {
+  text-align: center;
+}
+
+.impressum-wrapper {
+  top: 200px;
+}
+
+.impressum-box {
+  width: 50%;
+  max-width: 800px;
+}
+
+.impressum-box h2 {
+  color: #001830;
+  margin-top: 30px;
+  font-size: 1.2em;
+}
+
+.impressum-box p {
+  margin-left: 20px;
+}
+
+.discord-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.pillar {
+  margin: 25px 0;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+
+.conclusion {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 1.1em;
+}
+
+.button-box {
+  background-color: rgba(255, 255, 255, 0.92);
+  padding: 30px;
+  border-radius: 15px;
+  width: 25%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pdf-button {
+  display: block;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #000000;
+  padding: 20px 25px;
+  border-radius: 12px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 28px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pdf-button:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+}
+
+.impressum-button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 500px;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 15px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.impressum-button:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  transform: translateX(-50%) scale(1.05);
 }
 
 /* Tablet-Ansicht */
@@ -67,13 +390,49 @@ body {
     font-size: 48px;
     top: 250px;
   }
-  .video {
-    width: 80vw;
-    height: 45vw;
-    max-width: 560px;
-    max-height: 315px;
+  .description-box {
+    width: 85%;
+    padding: 20px;
     top: 350px;
   }
+  .description-box h1 {
+    font-size: 1.6em;
+  }
+  .description-box h2 {
+    font-size: 1.2em;
+  }
+  .pdf-button {
+    top: 950px;
+    font-size: 24px;
+    padding: 18px 36px;
+  }
+}
+.container {
+  padding: 10px;
+}
+.MODERNA-LOGOmini {
+  height: 80px;
+}
+.überschrift {
+  font-size: 48px;
+  top: 250px;
+}
+.video {
+  width: 80vw;
+  height: 45vw;
+  max-width: 560px;
+  max-height: 315px;
+  top: 350px;
+}
+.pdf-button {
+  top: 350px;
+  font-size: 20px;
+  padding: 12px 25px;
+}
+.impressum-button {
+  top: 450px;
+  font-size: 20px;
+  padding: 12px 25px;
 }
 
 /* Handy-Ansicht */
@@ -102,5 +461,18 @@ body {
     top: 300px;
     border-width: 3px;
   }
+  .pdf-button {
+    top: 300px;
+    font-size: 18px;
+    padding: 10px 20px;
+    width: 80%;
+    text-align: center;
+  }
+  .impressum-button {
+    top: 400px;
+    font-size: 18px;
+    padding: 10px 20px;
+    width: 80%;
+    text-align: center;
+  }
 }
-
