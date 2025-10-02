@@ -130,6 +130,7 @@ body::before {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  z-index: 1;
 }
 
 .scroll-nav {
@@ -248,41 +249,53 @@ body::before {
   width: 90%;
   max-width: 1400px;
   margin: 0 auto;
+  z-index: 1;
 }
 
 .description-box {
-  background-color: rgba(255, 255, 255, 0.82);
+  background: linear-gradient(135deg,
+    #ff3b3b 0%,
+    #ff7a3b 20%,
+    #ffd13b 40%,
+    #3bffb5 60%,
+    #3b6bff 80%,
+    #8a2be2 100%);
+  background-size: 600% 600%;
+  animation: gradientShift 15s ease infinite; /* langsamer */
   padding: 25px;
   border-radius: 15px;
   width: 65%;
   flex-shrink: 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  color: #000;
+  color: #000000;
 }
 
 .description-box h1 {
   font-size: 1.8em;
   margin-bottom: 15px;
-  color: #000;
+  color: #000000;
   text-align: center;
+  z-index: 1;
 }
 
 .description-box h2 {
   font-size: 1.3em;
   margin-top: 20px;
   margin-bottom: 12px;
-  color: #000;
+  color: #000000;
+  z-index: 1;
 }
 
 .description-box p {
   margin-bottom: 12px;
   line-height: 1.5;
   font-size: 0.95em;
+  z-index: 1;
 }
 
 .description-box .slogan {
   text-align: center;
+  z-index: 1;
 }
 
 .impressum-wrapper {
@@ -314,12 +327,14 @@ body::before {
   padding: 15px;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
+  z-index: 1;
 }
 
 .conclusion {
   text-align: center;
   margin-top: 30px;
   font-size: 1.1em;
+  z-index: 1;
 }
 
 .button-box {
@@ -496,4 +511,9 @@ body::before {
   font-size: 18px;
   padding: 10px 20px;
   width: 100%;
+}
+@keyframes gradientShift {
+  0%   { background-position: 100% 0%; }
+  50%  { background-position: 0% 100%; }
+  100% { background-position: 100% 0%; }
 }
